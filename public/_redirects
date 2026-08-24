@@ -1,1 +1,8 @@
-https://stafprint.netlify.app/*  https://stafprint.com/:splat  301!
+# INSTRUCTEUR
+https://spc-student.netlify.app/*   https://instructor.stafprint.com/:splat   301!
+
+# STUDENT
+https://spc-student.netlify.app/*   https://student.stafprint.com/:splat   301!
+
+# MEET
+https://https://spc-meet.netlify.app/*   https://meet.stafprint.com/:splat   301!
