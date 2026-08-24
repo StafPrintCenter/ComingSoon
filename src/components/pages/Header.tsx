@@ -14,7 +14,7 @@ function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
     <button
       onClick={onToggle}
       aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}
-      className="flex size-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-brand"
+      className="flex size-9 items-center justify-center rounded-full border border-border bg-card/80 text-muted-foreground backdrop-blur-md transition-colors hover:text-brand"
     >
       {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </button>
@@ -25,11 +25,9 @@ export function ComingSoonHeader() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    // Vérification initiale de la classe 'dark' sur l'élément racine
     const isDark = document.documentElement.classList.contains("dark");
     setDark(isDark);
 
-    // Observer les changements de classe sur documentElement (ex: bascule dynamique)
     const observer = new MutationObserver(() => {
       setDark(document.documentElement.classList.contains("dark"));
     });
@@ -58,9 +56,9 @@ export function ComingSoonHeader() {
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50"
+      className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href={SITE_LINK.landingUrl} className="flex items-center">
           <img
             src={dark ? logo.dw : logo.dc}
@@ -71,7 +69,7 @@ export function ComingSoonHeader() {
 
         <div className="flex items-center gap-3">
           {/* Badge bêta rétro-éclairé */}
-          <span className="glass-card hidden items-center gap-2 rounded-full px-4 py-1.5 sm:flex">
+          <span className="glass-card hidden items-center gap-2 rounded-full border border-border/80 bg-card/60 px-4 py-1.5 backdrop-blur-md sm:flex">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-pulse-dot rounded-full bg-brand" />
               <span className="relative inline-flex size-2 rounded-full bg-brand" />
