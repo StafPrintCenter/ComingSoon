@@ -115,31 +115,6 @@ export function detectPlatformFromHostname(hostname: string): PlatformKey {
   return "default";
 }
 
-/** Plateformes disponibles de l'écosystème (navigation de secours). */
-export const LIVE_PLATFORMS = [
-  {
-    label: "Site Principal",
-    description: "Découvrir STAF PRINT CENTER",
-    href: "https://stafprint.com",
-    host: "stafprint.com",
-    icon: "globe",
-  },
-  {
-    label: "Documentation",
-    description: "Guides et références techniques",
-    href: "https://docs.stafprint.com",
-    host: "docs.stafprint.com",
-    icon: "book",
-  },
-  {
-    label: "SPC Arcade",
-    description: "Espace jeux et détente",
-    href: "https://play.stafprint.com",
-    host: "play.stafprint.com",
-    icon: "gamepad",
-  },
-] as const;
-
 export const BUILD_PROGRESS = 27;
 
 export const BUILD_STEPS = [
