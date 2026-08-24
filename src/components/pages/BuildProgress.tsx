@@ -15,7 +15,7 @@ export function BuildProgress() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-card mx-auto w-full max-w-xl rounded-3xl p-6 sm:p-8"
+      className="glass-card mx-auto w-full max-w-2xl rounded-3xl p-6 sm:p-8"
       aria-label="Avancement des développements"
     >
       <div className="flex items-end justify-between">
