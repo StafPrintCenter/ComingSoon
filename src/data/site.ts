@@ -32,17 +32,3 @@ export const SITE_LINK = {
   arcadeUrl: import.meta.env.VITE_ARCADE_URL,
   docsUrl: import.meta.env.VITE_DOCS_URL,
 };
-
-export const NAV_LINKS = [
-  { label: "Services", to: "/services" },
-  { label: "Réalisations", to: "/projects" },
-  { label: "Formations", to: "/trainings" },
-  { label: "Blog", to: "/articles" },
-  { label: "FAQs", to: "/faqs" },
-] as const;
-
-export const FOOTER_LINKS = [
-  { label: "Mentions légales", to: "/legal/mentions" },
-  { label: "Confidentialité", to: "/legal/privacy" },
-  { label: "Conditions Générales de Vente", to: "/legal/cgv" },
-] as const;
