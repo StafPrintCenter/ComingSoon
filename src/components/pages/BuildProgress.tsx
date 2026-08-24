@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, Loader2, Circle } from "lucide-react";
-import { BUILD_PROGRESS, BUILD_STEPS } from "../../lib/site";
+import { BUILD_PROGRESS, BUILD_STEPS } from "@/lib/site";
 
 const stepIcon = {
   done: <Check className="size-3.5" />,
