@@ -42,23 +42,6 @@ export function ComingSoonHeader() {
       className="fixed inset-x-0 top-0 z-50"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        {/* Logo monogramme SP + nom */}
-        <a
-          href="https://stafprint.com"
-          className="group flex items-center gap-3">
-          <span className="gradient-brand glow-brand flex size-10 items-center justify-center rounded-xl font-display text-sm font-bold tracking-tight text-primary-foreground transition-transform duration-300 group-hover:scale-105">
-            SP
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-sm font-bold tracking-[0.18em] text-foreground">
-              STAF PRINT
-            </span>
-            <span className="font-mono text-[10px] font-medium tracking-[0.32em] text-muted-foreground">
-              CENTERddd
-            </span>
-          </span>
-        </a>
-
         <a href={SITE_LINK.landingUrl} className="flex items-center">
           <img src={logo.dc} alt="Logo SPC" className="h-10 md:h-12 w-auto" />
         </a>
