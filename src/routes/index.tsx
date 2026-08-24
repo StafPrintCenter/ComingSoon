@@ -8,6 +8,8 @@ import { BuildProgress } from "../components/coming-soon/BuildProgress";
 import { Roadmap } from "../components/coming-soon/Roadmap";
 import { NotifyForm } from "../components/coming-soon/NotifyForm";
 import { LivePlatforms } from "../components/coming-soon/LivePlatforms";
+import { PreviewIllustration } from "../components/coming-soon/PreviewIllustration";
+
 import {
   BUILD_PROGRESS,
   PLATFORMS,
@@ -47,7 +49,6 @@ function ComingSoonPage() {
   const { platform: platformParam } = Route.useSearch();
   const [platformKey, setPlatformKey] = useState<PlatformKey>(platformParam);
 
-  // Détection par sous-domaine quand aucun paramètre d'URL n'est fourni.
   useEffect(() => {
     if (platformParam === "default") {
       setPlatformKey(detectPlatformFromHostname(window.location.hostname));
@@ -58,7 +59,7 @@ function ComingSoonPage() {
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background font-sans text-foreground">
-      {/* Décor : trame de points + halos orange */}
+      {/* Décor : trame de points + halos */}
       <div className="dot-matrix pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]"
@@ -75,51 +76,63 @@ function ComingSoonPage() {
 
       <ComingSoonHeader />
 
-      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-36 pb-16 sm:px-8 sm:pt-44">
-        {/* ---- Hero ---- */}
-        <section className="flex w-full flex-col items-center text-center">
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease }}
-            className="glass-card flex items-center gap-2 rounded-full px-4 py-1.5"
-          >
-            <HardHat className="size-3.5 text-brand" />
-            <span className="text-xs font-semibold text-foreground">
+      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-28 pb-16 sm:px-8 sm:pt-36">
+        {/* ---- Hero Section en 2 colonnes ---- */}
+        <section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
+
+          {/* Colonne gauche — Textes & Formulaire */}
+          <div className="flex flex-col items-start text-left">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease }}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm"
+            >
+              <HardHat className="h-3.5 w-3.5 text-brand" />
               Plateforme en cours de construction
-            </span>
-          </motion.span>
+            </motion.span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.7, ease }}
-            className="mt-8 max-w-3xl font-display text-4xl leading-[1.08] font-bold tracking-tight text-foreground sm:text-6xl"
-          >
-            <span className="text-glow-brand text-brand">{platform.name}</span>
-            <br />
-            arrive très bientôt.
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.7, ease }}
+              className="mt-7 text-balance font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl"
+            >
+              <span className="text-glow-brand text-brand">{platform.name}</span>
+              <br />
+              arrive très bientôt.
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.24, duration: 0.7, ease }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-          >
-            {platform.tagline}
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.24, duration: 0.7, ease }}
+              className="mt-6 max-w-xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
+              {platform.tagline}
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.36, duration: 0.7, ease }}
+              className="mt-8 w-full"
+            >
+              <NotifyForm platformName={platform.name} />
+              <p className="mt-3 font-mono text-[11px] text-muted-foreground">
+                Zéro spam — un seul email au moment du lancement.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Colonne droite — Illustration technique du Build */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.36, duration: 0.7, ease }}
-            className="mt-10 w-full"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease }}
+            className="w-full"
           >
-            <NotifyForm platformName={platform.name} />
-            <p className="mt-3 font-mono text-[11px] text-muted-foreground">
-              Zéro spam — un seul email au moment du lancement.
-            </p>
+            <PreviewIllustration platformName={platform.name} />
           </motion.div>
         </section>
 
