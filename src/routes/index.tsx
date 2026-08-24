@@ -2,17 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { HardHat } from "lucide-react";
 import { useEffect, useState } from "react";
-
 import {
   ComingSoonHeader,
   PreviewIllustration,
   BuildProgress,
-  Roadmap
-
+  Roadmap,
+  NotifyForm,
+  LivePlatforms
 } from "@/components/pages";
-import { NotifyForm } from "../components/coming-soon/NotifyForm";
-import { LivePlatforms } from "../components/coming-soon/LivePlatforms";
-import { PreviewIllustration } from "../components/coming-soon/PreviewIllustration";
 
 import {
   BUILD_PROGRESS,
@@ -20,7 +17,7 @@ import {
   SITE,
   detectPlatformFromHostname,
   type PlatformKey,
-} from "../lib/site";
+} from "@/lib/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
