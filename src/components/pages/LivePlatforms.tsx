@@ -1,27 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
 import logos from "@/assets/logos.json";
 import { ECOSYSTEM_SITES } from "@/data/ecosystem";
 import { stripProtocol } from "@/lib/domain";
+import { useTheme } from "@/hooks/useTheme";
 
 export function LivePlatforms() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-
-    const observer = new MutationObserver(() => {
-      setDark(document.documentElement.classList.contains("dark"));
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const { dark } = useTheme();
 
   return (
     <section className="mx-auto w-full max-w-4xl" aria-label="Plateformes déjà disponibles">
