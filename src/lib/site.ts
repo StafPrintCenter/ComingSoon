@@ -140,7 +140,7 @@ export const LIVE_PLATFORMS = [
   },
 ] as const;
 
-export const BUILD_PROGRESS = 75;
+export const BUILD_PROGRESS = 27;
 
 export const BUILD_STEPS = [
   { label: "UI Design", status: "done" },
