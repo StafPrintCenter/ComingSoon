@@ -19,6 +19,9 @@ import {
   type PlatformKey,
 } from "@/lib/site";
 
+const COMING_SOON_TITLE = `En cours de développement | ${SITE.name}`;
+const COMING_SOON_DESC = `Cette plateforme de l'écosystème ${SITE.name} est actuellement en cours de construction. Inscrivez-vous pour être informé du lancement.`;
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/")({
@@ -30,17 +33,11 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: `En cours de développement | ${SITE.name}` },
-      {
-        name: "description",
-        content: `Cette plateforme de l'écosystème ${SITE.name} est actuellement en cours de construction. Inscrivez-vous pour être informé du lancement.`,
-      },
+      { title: COMING_SOON_TITLE },
+      { name: "description", content: COMING_SOON_DESC },
       { name: "robots", content: "noindex, follow" },
-      { property: "og:title", content: `En cours de développement | ${SITE.name}` },
-      {
-        property: "og:description",
-        content: `Cette plateforme de l'écosystème ${SITE.name} est actuellement en cours de construction. Inscrivez-vous pour être informé du lancement.`,
-      },
+      { property: "og:title", content: COMING_SOON_TITLE },
+      { property: "og:description", content: COMING_SOON_DESC },
     ],
   }),
   component: ComingSoonPage,
