@@ -1,11 +1,11 @@
 import { Terminal, Cpu, Hammer, CheckCircle2, Clock } from "lucide-react";
 import { BUILD_PROGRESS, SITE } from "@/lib/site";
 
-interface ConstructionPreviewIllustrationProps {
+interface PreviewIllustrationProps {
   platformName: string;
 }
 
-export function ConstructionPreviewIllustration({ platformName }: ConstructionPreviewIllustrationProps) {
+export function PreviewIllustration({ platformName }: PreviewIllustrationProps) {
   return (
     <div className="relative mx-auto w-full max-w-md min-w-0 lg:mx-0 lg:max-w-none">
       {/* Halo lumineux de fond */}
