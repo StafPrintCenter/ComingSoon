@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { HardHat } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { ComingSoonHeader } from "../components/coming-soon/Header";
-import { BuildProgress } from "../components/coming-soon/BuildProgress";
-import { Roadmap } from "../components/coming-soon/Roadmap";
+import {
+  ComingSoonHeader,
+  PreviewIllustration,
+  BuildProgress,
+  Roadmap
+
+} from "@/components/pages";
 import { NotifyForm } from "../components/coming-soon/NotifyForm";
 import { LivePlatforms } from "../components/coming-soon/LivePlatforms";
 import { PreviewIllustration } from "../components/coming-soon/PreviewIllustration";
