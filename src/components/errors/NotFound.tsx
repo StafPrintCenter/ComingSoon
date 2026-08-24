@@ -17,7 +17,7 @@ export function NotFoundComponent() {
     if (typeof window !== "undefined" && window.history.length > 2) {
       window.history.back();
     } else {
-      navigate({ to: "/" });
+      navigate({ to: "/", search: { platform: "default" } });
     }
   };
 
@@ -74,6 +74,7 @@ export function NotFoundComponent() {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               to="/"
+              search={{ platform: "default" }}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-500 px-6 py-3.5 text-sm font-semibold text-black hover:bg-amber-400 active:scale-95 transition-all shadow-lg shadow-amber-500/20"
             >
               <Sparkles className="h-4 w-4" />
@@ -85,7 +86,7 @@ export function NotFoundComponent() {
               onClick={handleGoBack}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground hover:bg-muted active:scale-95 transition-all shadow-xs"
             >
-              <ArroswLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4" />
               Page précédente
             </button>
           </div>
