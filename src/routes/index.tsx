@@ -61,7 +61,7 @@ function ComingSoonPage() {
       {/* Décor : trame de points + halos orange */}
       <div className="dot-matrix pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]"
+        className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]"
         aria-hidden="true"
       />
       <div
