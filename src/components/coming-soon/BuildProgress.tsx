@@ -42,7 +42,7 @@ export function BuildProgress() {
           transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="gradient-brand relative h-full overflow-hidden rounded-full"
         >
-          <span className="absolute inset-y-0 w-1/2 animate-shimmer-bar bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          <span className="absolute inset-y-0 w-1/2 animate-shimmer-bar bg-linear-to-r from-transparent via-white/40 to-transparent" />
         </motion.div>
       </div>
 
