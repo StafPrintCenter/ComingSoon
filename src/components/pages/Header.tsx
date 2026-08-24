@@ -4,14 +4,45 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/logos.json";
 import { SITE_LINK } from "@/data/site";
 
-function ThemeToggle() {
+interface ThemeToggleProps {
+  dark: boolean;
+  onToggle: () => void;
+}
+
+function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}
+      className="flex size-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-brand"
+    >
+      {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+    </button>
+  );
+}
+
+export function ComingSoonHeader() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
+    // Vérification initiale de la classe 'dark' sur l'élément racine
+    const isDark = document.documentElement.classList.contains("dark");
+    setDark(isDark);
+
+    // Observer les changements de classe sur documentElement (ex: bascule dynamique)
+    const observer = new MutationObserver(() => {
+      setDark(document.documentElement.classList.contains("dark"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  const toggle = () => {
+  const toggleTheme = () => {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
@@ -23,18 +54,6 @@ function ThemeToggle() {
   };
 
   return (
-    <button
-      onClick={toggle}
-      aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}
-      className="flex size-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-brand"
-    >
-      {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
-    </button>
-  );
-}
-
-export function ComingSoonHeader() {
-  return (
     <motion.header
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -43,7 +62,11 @@ export function ComingSoonHeader() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a href={SITE_LINK.landingUrl} className="flex items-center">
-          <img src={logo.dc} alt="Logo SPC" className="h-10 md:h-12 w-auto" />
+          <img
+            src={dark ? logo.dw : logo.dc}
+            alt="Logo SPC"
+            className="h-10 w-auto md:h-12"
+          />
         </a>
 
         <div className="flex items-center gap-3">
@@ -60,7 +83,7 @@ export function ComingSoonHeader() {
               <span className="font-mono text-[11px] text-brand">Phase Bêta</span>
             </span>
           </span>
-          <ThemeToggle />
+          <ThemeToggle dark={dark} onToggle={toggleTheme} />
         </div>
       </div>
     </motion.header>
