@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Moon, Rocket, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
-import { SITE } from "../../lib/site";
+import logo from "@/assets/logos.json";
+import { SITE_LINK } from "@/data/site";
 
 function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -42,7 +43,9 @@ export function ComingSoonHeader() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         {/* Logo monogramme SP + nom */}
-        <a href="https://stafprint.com" className="group flex items-center gap-3">
+        <a
+          href="https://stafprint.com"
+          className="group flex items-center gap-3">
           <span className="gradient-brand glow-brand flex size-10 items-center justify-center rounded-xl font-display text-sm font-bold tracking-tight text-primary-foreground transition-transform duration-300 group-hover:scale-105">
             SP
           </span>
@@ -51,9 +54,13 @@ export function ComingSoonHeader() {
               STAF PRINT
             </span>
             <span className="font-mono text-[10px] font-medium tracking-[0.32em] text-muted-foreground">
-              CENTER
+              CENTERddd
             </span>
           </span>
+        </a>
+
+        <a href={SITE_LINK.landingUrl} className="flex items-center">
+          <img src={logo.dc} alt="Logo SPC" className="h-10 md:h-12 w-auto" />
         </a>
 
         <div className="flex items-center gap-3">
