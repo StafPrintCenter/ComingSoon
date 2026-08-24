@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import type { PlatformConfig } from "../../lib/site";
+import type { PlatformConfig } from "@/lib/site";
 
 export function Roadmap({ roadmap }: { roadmap: PlatformConfig["roadmap"] }) {
   return (
