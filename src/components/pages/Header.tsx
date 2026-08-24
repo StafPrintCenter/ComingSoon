@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Moon, Rocket, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 import logo from "@/assets/logos.json";
 import { SITE_LINK } from "@/data/site";
+import { useTheme } from "@/hooks/useTheme";
 
 interface ThemeToggleProps {
   dark: boolean;
@@ -22,34 +22,7 @@ function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
 }
 
 export function ComingSoonHeader() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setDark(isDark);
-
-    const observer = new MutationObserver(() => {
-      setDark(document.documentElement.classList.contains("dark"));
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    try {
-      localStorage.setItem("spc-theme", next ? "dark" : "light");
-    } catch {
-      /* stockage indisponible */
-    }
-  };
+  const { dark, toggleTheme } = useTheme();
 
   return (
     <motion.header
