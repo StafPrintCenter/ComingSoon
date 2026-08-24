@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, BookOpen, Gamepad2, Globe } from "lucide-react";
-import { LIVE_PLATFORMS } from "@/lib/site";
+import { ECOSYSTEM_SITES } from "@/data/ecosystem";
 
 const icons = {
   globe: Globe,
@@ -21,12 +21,12 @@ export function LivePlatforms() {
         En attendant, explorez l'écosystème
       </motion.p>
       <div className="grid gap-4 sm:grid-cols-3">
-        {LIVE_PLATFORMS.map((platform, index) => {
+        {ECOSYSTEM_SITES.map((platform, index) => {
           const Icon = icons[platform.icon];
           return (
             <motion.a
               key={platform.host}
-              href={platform.href}
+              href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 28 }}
@@ -41,7 +41,7 @@ export function LivePlatforms() {
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-foreground">
-                    {platform.label}
+                    {platform.name}
                   </span>
                   <span className="mt-0.5 block text-xs text-muted-foreground">
                     {platform.description}
