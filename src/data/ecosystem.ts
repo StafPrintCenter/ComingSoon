@@ -7,8 +7,7 @@ export interface EcosystemSite {
   description: string;
   url: string;
   logoKey: keyof typeof logos;
-  host: string
-  icon: string
+  logoDarkKey: keyof typeof logos;
 }
 
 export const ECOSYSTEM_SITES: EcosystemSite[] = [
@@ -18,17 +17,15 @@ export const ECOSYSTEM_SITES: EcosystemSite[] = [
     description: `Le site principal de ${SITE.name} : services, réalisations, formations, blog et contact.`,
     url: SITE_LINK.landingUrl,
     logoKey: "mc",
-    host: "stafprint.com",
-    icon: "globe",
+    logoDarkKey: "mw",
   },
   {
     id: "arcade",
     name: "SPC Arcade",
-    description: `Hub de jeux interactifs pour se divertir tout en développant ses compétences techniques.`,
+    description: "Hub de jeux interactifs pour se divertir tout en développant ses compétences techniques.",
     url: SITE_LINK.arcadeUrl,
     logoKey: "arcade",
-    host: "stafprint.com",
-    icon: "globe",
+    logoDarkKey: "arcadeW",
   },
   {
     id: "documentation",
@@ -36,7 +33,6 @@ export const ECOSYSTEM_SITES: EcosystemSite[] = [
     description: `Guides, procédures et ressources techniques de ${SITE.name}.`,
     url: SITE_LINK.docsUrl,
     logoKey: "docs",
-    host: "stafprint.com",
-    icon: "globe",
+    logoDarkKey: "docsW",
   },
 ];
