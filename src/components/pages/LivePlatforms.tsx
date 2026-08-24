@@ -1,14 +1,28 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, BookOpen, Gamepad2, Globe } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import logos from "@/assets/logos.json";
 import { ECOSYSTEM_SITES } from "@/data/ecosystem";
-
-const icons = {
-  globe: Globe,
-  book: BookOpen,
-  gamepad: Gamepad2,
-} as const;
+import { stripProtocol } from "@/lib/domain";
 
 export function LivePlatforms() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+
+    const observer = new MutationObserver(() => {
+      setDark(document.documentElement.classList.contains("dark"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="mx-auto w-full max-w-4xl" aria-label="Plateformes déjà disponibles">
       <motion.p
@@ -22,10 +36,12 @@ export function LivePlatforms() {
       </motion.p>
       <div className="grid gap-4 sm:grid-cols-3">
         {ECOSYSTEM_SITES.map((platform, index) => {
-          const Icon = icons[platform.icon];
+          const logoSrc = logos[dark ? platform.logoDarkKey : platform.logoKey];
+          const displayUrl = stripProtocol(platform.url);
+
           return (
             <motion.a
-              key={platform.host}
+              key={platform.id}
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -36,8 +52,12 @@ export function LivePlatforms() {
               className="glass-card group flex items-start justify-between gap-3 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40"
             >
               <div className="flex items-start gap-3">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-colors group-hover:border-brand/40 group-hover:text-brand">
-                  <Icon className="size-5" />
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-card p-1.5 transition-colors group-hover:border-brand/40">
+                  <img
+                    src={logoSrc}
+                    alt={`Logo ${platform.name}`}
+                    className="size-full object-contain"
+                  />
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-foreground">
@@ -47,7 +67,7 @@ export function LivePlatforms() {
                     {platform.description}
                   </span>
                   <span className="mt-1.5 block font-mono text-[11px] text-brand">
-                    {platform.host}
+                    {displayUrl}
                   </span>
                 </span>
               </div>
