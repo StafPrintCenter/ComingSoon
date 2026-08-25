@@ -121,17 +121,12 @@ function ComingSoonPage() {
             transition={{ delay: 0.2, duration: 0.7, ease }}
             className="w-full"
           >
-            <PreviewIllustration platformName={platform.name} />
+            <PreviewIllustration platform={platform} />
           </motion.div>
         </section>
 
-        {/* ---- Progression ---- */}
         <BuildProgress progress={platform.progress} />
-
-        {/* ---- Roadmap teaser ---- */}
         <Roadmap roadmap={platform.roadmap} />
-
-        {/* ---- Navigation de secours ---- */}
         <LivePlatforms />
       </main>
 
