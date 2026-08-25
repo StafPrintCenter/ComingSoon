@@ -19,9 +19,12 @@ export function PreviewIllustration({
 
   const landingDomain = stripProtocol(SITE_LINK.landingUrl ?? "");
 
-  // Génère le slug et retire le préfixe "spc-" ou "spc"
+  // Normalisation
   const rawSlug = name.toLowerCase().replace(/\s+/g, "-");
-  const platformSlug = rawSlug.replace(/^(spc|espace)-?/, "");
+  const cleanedSlug = rawSlug.replace(/^(spc|espace)-?/, "");
+  const platformSlug = cleanedSlug
+    .replace(/formateur/g, "instructor")
+    .replace(/apprenant/g, "student");
 
   return (
     <div className="relative mx-auto w-full max-w-md min-w-0 lg:mx-0 lg:max-w-none">
