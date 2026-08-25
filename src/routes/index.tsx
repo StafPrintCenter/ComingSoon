@@ -10,11 +10,11 @@ import {
   NotifyForm,
   LivePlatforms
 } from "@/components/pages";
+import { SITE } from "@/data/site";
 
 import {
   BUILD_PROGRESS,
   PLATFORMS,
-  SITE,
   detectPlatformFromHostname,
   type PlatformKey,
 } from "@/lib/site";
@@ -148,10 +148,10 @@ function ComingSoonPage() {
       <footer className="relative z-10 border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-6 sm:flex-row sm:px-8">
           <p className="text-xs text-muted-foreground">
-            © {SITE.year} {SITE.name} — Tous droits réservés.
+            © {new Date().getFullYear()} {SITE.name} - Tous droits réservés.
           </p>
           <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
-            Build <span className="text-brand">{SITE.version}</span> · {BUILD_PROGRESS}% complete
+            Build <span className="text-brand">{SITE.opinion.stars}</span> · {BUILD_PROGRESS}% complete
           </p>
         </div>
       </footer>
