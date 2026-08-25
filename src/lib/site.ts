@@ -1,5 +1,5 @@
-import { SITE, SITE_LINK } from "@/data/site";
-export type PlatformKey = "meet" | "student" | "instructeur";
+import { SITE } from "@/data/site";
+export type PlatformKey = "meet" | "student" | "instructor";
 
 export interface PlatformConfig {
   key: string;
@@ -13,11 +13,11 @@ export interface PlatformConfig {
 const GENERIC_ROADMAP: PlatformConfig["roadmap"] = [
   {
     title: "Interface nouvelle génération",
-    description: "Une expérience repensée, rapide et élégante, fidèle à la charte ${SITE.name}.",
+    description: `Une expérience repensée, rapide et élégante, fidèle à la charte ${SITE.name}.`,
   },
   {
     title: "Synchronisation écosystème",
-    description: "Connexion transparente avec toutes les plateformes ${SITE.name}.",
+    description: `Connexion transparente avec toutes les plateformes ${SITE.name}.`,
   },
   {
     title: "Sécurité renforcée",
@@ -26,13 +26,12 @@ const GENERIC_ROADMAP: PlatformConfig["roadmap"] = [
 ];
 
 export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
-  instructeur: {
-    key: "instructeur",
-    name: "SPC INSTRUCTEUR",
+  instructor: {
+    key: "instructor",
+    name: "Espace Formateur",
     progress: 36,
     version: "v0.4.0-beta",
-    tagline:
-      "Le cockpit pédagogique des formateurs STAF PRINT. Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception.",
+    tagline: `Préparer, animer et évaluer les sessions de formation : parcours, supports, présence, notation et suivi des apprenants pour ${SITE.name}.`,
     roadmap: [
       {
         title: "Suivi des apprenants",
@@ -50,11 +49,10 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
   },
   student: {
     key: "student",
-    name: "SPC STUDENT",
+    name: "Espace Apprenant",
     progress: 12,
     version: "v0.1.2-alpha",
-    tagline:
-      "L'espace apprenant de ${SITE.name} : cours, exercices et progression réunis au même endroit. Nous posons actuellement les premières briques.",
+    tagline: `S'inscrire à une formation, suivre ses cours, rendre ses devoirs et récupérer ses attestations depuis le Student Hub de ${SITE.name}.`,
     roadmap: [
       {
         title: "Parcours personnalisés",
@@ -72,11 +70,10 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
   },
   meet: {
     key: "meet",
-    name: "SPC MEET",
+    name: "SPC Meet",
     progress: 18,
     version: "v0.2.4-alpha",
-    tagline:
-      "Visioconférence souveraine et fluide, pensée pour nos équipes. Nous peaufinons les fondations au sein de l'écosystème STAF PRINT CENTER.",
+    tagline: `Plateforme de visioconférence pour les réunions et sessions à distance de ${SITE.name}.`,
     roadmap: [
       {
         title: "Salles HD instantanées",
@@ -88,7 +85,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
       },
       {
         title: "Enregistrement cloud",
-        description: "Retrouvez chaque session archivée dans votre espace STAF PRINT.",
+        description: `Retrouvez chaque session archivée dans votre espace ${SITE.name}.`,
       },
     ],
   },
@@ -102,10 +99,10 @@ const SUBDOMAIN_ALIASES: Record<string, PlatformKey> = {
   students: "student",
   etudiant: "student",
   apprenant: "student",
-  instructeur: "instructeur",
-  formateur: "instructeur",
-  teacher: "instructeur",
-  prof: "instructeur",
+  instructeur: "instructor",
+  formateur: "instructor",
+  teacher: "instructor",
+  prof: "instructor",
 };
 
 const IGNORED_SUBDOMAINS = new Set(["www", "localhost", "stafprint", "id-preview", "preview"]);
@@ -140,8 +137,7 @@ export function resolvePlatform(source: string): PlatformConfig {
       name: "Nouvelle plateforme SPC",
       progress: 15,
       version: "v0.1.0-alpha",
-      tagline:
-        "Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception au sein de l'écosystème STAF PRINT CENTER.",
+      tagline: `Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception au sein de l'écosystème ${SITE.name}.`,
       roadmap: GENERIC_ROADMAP,
     };
   }
@@ -151,8 +147,7 @@ export function resolvePlatform(source: string): PlatformConfig {
     name: prettifySlug(raw),
     progress: 15,
     version: "v0.1.0-alpha",
-    tagline:
-      "Cette plateforme de l'écosystème STAF PRINT CENTER est en cours de construction. Nous peaufinons chaque détail avant l'ouverture.",
+    tagline: `Cette plateforme de l'écosystème ${SITE.name} est en cours de construction. Nous peaufinons chaque détail avant l'ouverture.`,
     roadmap: GENERIC_ROADMAP,
   };
 }
