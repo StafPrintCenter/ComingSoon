@@ -5,11 +5,8 @@
  */
 
 export const SITE = {
-  name: "STAF PRINT CENTER",
-  shortName: "SPC",
   domain: "stafprint.com",
   version: "v0.9.2-beta",
-  year: 2026,
 } as const;
 
 export type PlatformKey = "default" | "meet" | "shortener" | "formateur";
