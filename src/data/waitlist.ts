@@ -7,9 +7,6 @@ export const WAITLIST_PLATFORM_LABELS: Record<WaitlistPlatform, string> = {
   other: "Autre",
 };
 
-/**
- * Type aligné sur la réponse de POST /public/waitlist/register
- */
 export type APIPlatformWaitlistRegistration = {
   id: string;
   email: string;
