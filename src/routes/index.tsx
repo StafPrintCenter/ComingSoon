@@ -78,7 +78,7 @@ function ComingSoonPage() {
         {/* ---- Hero Section en 2 colonnes ---- */}
         <section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
 
-          {/* Colonne gauche — Textes & Formulaire */}
+          {/* Colonne gauche - Textes & Formulaire */}
           <div className="flex flex-col items-start text-left">
             <motion.span
               initial={{ opacity: 0, scale: 0.9 }}
@@ -118,12 +118,12 @@ function ComingSoonPage() {
             >
               <NotifyForm platformName={platform.name} />
               <p className="mt-3 font-mono text-[11px] text-muted-foreground">
-                Zéro spam — un seul email au moment du lancement.
+                Zéro spam - un seul email au moment du lancement.
               </p>
             </motion.div>
           </div>
 
-          {/* Colonne droite — Illustration technique du Build */}
+          {/* Colonne droite - Illustration technique du Build */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
