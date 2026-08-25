@@ -2,7 +2,7 @@ import { Bell, BellRing, CheckCircle2, Send, Loader2, AlertCircle } from "lucide
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import { registerToWaitlist, WaitlistApiError } from "@/stores/useWaitlistStore";
+import { registerToWaitlist } from "@/stores/useWaitlistStore";
 
 const emailSchema = z.string().trim().email("Adresse email invalide");
 
@@ -31,15 +31,15 @@ export function NotifyForm({ platformName }: NotifyFormProps) {
 
     setIsSubmitting(true);
     try {
-      const result = await registerToWaitlist({ email: parsed.data });
-      setRegistered(result.email);
+      const { registration, message } = await registerToWaitlist({ email: parsed.data });
+      setRegistered(registration.email);
       toast.success("Vous êtes sur la liste !", {
-        description: `Nous préviendrons ${result.email} dès le lancement de ${platformName}.`,
+        description: message ?? `Nous préviendrons ${registration.email} dès le lancement de ${platformName}.`,
         icon: <BellRing className="size-4" />,
       });
       setEmail("");
     } catch (err) {
-      const message = err instanceof WaitlistApiError ? err.message : "Une erreur inattendue est survenue.";
+      const message = err instanceof Error ? err.message : "Une erreur inattendue est survenue.";
       setError(message);
       toast.error("Inscription impossible", { description: message });
     } finally {
@@ -97,7 +97,7 @@ export function NotifyForm({ platformName }: NotifyFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 cursor-pointer"
+          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
         >
           {isSubmitting ? (
             <>
