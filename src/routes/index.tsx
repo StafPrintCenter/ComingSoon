@@ -11,13 +11,7 @@ import {
   LivePlatforms
 } from "@/components/pages";
 import { SITE } from "@/data/site";
-
-import {
-  BUILD_PROGRESS,
-  PLATFORMS,
-  detectPlatformFromHostname,
-  type PlatformKey,
-} from "@/lib/site";
+import { resolvePlatform, type PlatformConfig } from "../lib/site";
 
 const COMING_SOON_TITLE = `En cours de développement | ${SITE.name}`;
 const COMING_SOON_DESC = `Cette plateforme de l'écosystème ${SITE.name} est actuellement en cours de construction. Inscrivez-vous pour être informé du lancement.`;
@@ -26,10 +20,8 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/")({
   validateSearch: (search: Record<string, unknown>) => {
-    const raw = typeof search["platform"] === "string" ? search["platform"] : undefined;
-    const platform: PlatformKey =
-      raw && raw in PLATFORMS ? (raw as PlatformKey) : "default";
-    return { platform };
+    const raw = typeof search["platform"] === "string" ? search["platform"].trim() : "";
+    return raw ? { platform: raw } : {};
   },
   head: () => ({
     meta: [
@@ -45,15 +37,14 @@ export const Route = createFileRoute("/")({
 
 function ComingSoonPage() {
   const { platform: platformParam } = Route.useSearch();
-  const [platformKey, setPlatformKey] = useState<PlatformKey>(platformParam);
+  const [platform, setPlatform] = useState<PlatformConfig>(() =>
+    resolvePlatform(platformParam ?? ""),
+  );
 
+  // Détection par sous-domaine quand aucun paramètre d'URL n'est fourni.
   useEffect(() => {
-    if (platformParam === "default") {
-      setPlatformKey(detectPlatformFromHostname(window.location.hostname));
-    }
+    setPlatform(resolvePlatform(platformParam ?? window.location.hostname));
   }, [platformParam]);
-
-  const platform = PLATFORMS[platformKey];
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background font-sans text-foreground">
@@ -135,7 +126,7 @@ function ComingSoonPage() {
         </section>
 
         {/* ---- Progression ---- */}
-        <BuildProgress />
+        <BuildProgress progress={platform.progress} />
 
         {/* ---- Roadmap teaser ---- */}
         <Roadmap roadmap={platform.roadmap} />
@@ -151,7 +142,8 @@ function ComingSoonPage() {
             © {new Date().getFullYear()} {SITE.name} - Tous droits réservés.
           </p>
           <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
-            Build <span className="text-brand">{SITE.opinion.stars}</span> · {BUILD_PROGRESS}% complete
+            Build <span className="text-brand">{platform.version}</span> · {platform.progress}%
+            complete
           </p>
         </div>
       </footer>
