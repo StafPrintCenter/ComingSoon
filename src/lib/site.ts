@@ -1,10 +1,4 @@
-/**
- * Configuration centrale de l'écosystème STAF PRINT CENTER.
- * La plateforme en construction est déduite du sous-domaine
- * (ex: meet.stafprint.com → SPC MEET). Le paramètre `?platform=`
- * reste disponible pour la prévisualisation.
- */
-
+import { SITE, SITE_LINK } from "@/data/site";
 export type PlatformKey = "meet" | "student" | "instructeur";
 
 export interface PlatformConfig {
@@ -19,11 +13,11 @@ export interface PlatformConfig {
 const GENERIC_ROADMAP: PlatformConfig["roadmap"] = [
   {
     title: "Interface nouvelle génération",
-    description: "Une expérience repensée, rapide et élégante, fidèle à la charte STAF PRINT.",
+    description: "Une expérience repensée, rapide et élégante, fidèle à la charte ${SITE.name}.",
   },
   {
     title: "Synchronisation écosystème",
-    description: "Connexion transparente avec toutes les plateformes STAF PRINT CENTER.",
+    description: "Connexion transparente avec toutes les plateformes ${SITE.name}.",
   },
   {
     title: "Sécurité renforcée",
@@ -38,7 +32,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 12,
     version: "v0.1.2-alpha",
     tagline:
-      "L'espace apprenant de STAF PRINT CENTER : cours, exercices et progression réunis au même endroit. Nous posons actuellement les premières briques.",
+      "L'espace apprenant de ${SITE.name} : cours, exercices et progression réunis au même endroit. Nous posons actuellement les premières briques.",
     roadmap: [
       {
         title: "Parcours personnalisés",
@@ -60,7 +54,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 18,
     version: "v0.2.4-alpha",
     tagline:
-      "Visioconférence souveraine et fluide, pensée pour vos équipes. Nous peaufinons les fondations au sein de l'écosystème STAF PRINT CENTER.",
+      "Visioconférence souveraine et fluide, pensée pour nos équipes. Nous peaufinons les fondations au sein de l'écosystème STAF PRINT CENTER.",
     roadmap: [
       {
         title: "Salles HD instantanées",
