@@ -5,12 +5,6 @@
  * reste disponible pour la prévisualisation.
  */
 
-export const SITE = {
-  name: "STAF PRINT CENTER",
-  shortName: "SPC",
-  year: 2026,
-} as const;
-
 export type PlatformKey = "meet" | "student" | "instructeur";
 
 export interface PlatformConfig {
@@ -123,7 +117,7 @@ const SUBDOMAIN_ALIASES: Record<string, PlatformKey> = {
 const IGNORED_SUBDOMAINS = new Set(["www", "localhost", "stafprint", "id-preview", "preview"]);
 
 function prettifySlug(slug: string) {
-  return `${SITE.shortName} ${slug.replace(/[-_]+/g, " ").toUpperCase()}`.trim();
+  return `SPC ${slug.replace(/[-_]+/g, " ").toUpperCase()}`.trim();
 }
 
 /** Extrait le sous-domaine (partie avant stafprint.com). */
@@ -149,7 +143,7 @@ export function resolvePlatform(source: string): PlatformConfig {
     return {
       ...PLATFORMS.meet,
       key: "generic",
-      name: `Nouvelle plateforme ${SITE.shortName}`,
+      name: "Nouvelle plateforme SPC",
       progress: 15,
       version: "v0.1.0-alpha",
       tagline:
