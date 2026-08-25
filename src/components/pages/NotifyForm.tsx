@@ -3,18 +3,15 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { registerToWaitlist, WaitlistApiError } from "@/stores/useWaitlistStore";
-import type { WaitlistPlatform } from "@/data/waitlist";
 
 const emailSchema = z.string().trim().email("Adresse email invalide");
 
 interface NotifyFormProps {
   /** Libellé affiché à l'utilisateur, ex: "SPC Meet" */
   platformName: string;
-  /** Valeur technique attendue par l'API, ex: "meet" */
-  platform: WaitlistPlatform;
 }
 
-export function NotifyForm({ platformName, platform }: NotifyFormProps) {
+export function NotifyForm({ platformName }: NotifyFormProps) {
   const [email, setEmail] = useState("");
   const [registered, setRegistered] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +31,7 @@ export function NotifyForm({ platformName, platform }: NotifyFormProps) {
 
     setIsSubmitting(true);
     try {
-      const result = await registerToWaitlist({ email: parsed.data, platformName: platform });
+      const result = await registerToWaitlist({ email: parsed.data });
       setRegistered(result.email);
       toast.success("Vous êtes sur la liste !", {
         description: `Nous préviendrons ${result.email} dès le lancement de ${platformName}.`,
@@ -100,7 +97,7 @@ export function NotifyForm({ platformName, platform }: NotifyFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 cursor-pointer"
         >
           {isSubmitting ? (
             <>
