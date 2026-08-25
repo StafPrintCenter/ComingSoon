@@ -21,7 +21,7 @@ export function PreviewIllustration({
 
   // Génère le slug et retire le préfixe "spc-" ou "spc"
   const rawSlug = name.toLowerCase().replace(/\s+/g, "-");
-  const platformSlug = rawSlug.replace(/^spc-?/, "");
+  const platformSlug = rawSlug.replace(/^(spc|espace)-?/, "");
 
   return (
     <div className="relative mx-auto w-full max-w-md min-w-0 lg:mx-0 lg:max-w-none">
