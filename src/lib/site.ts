@@ -26,6 +26,28 @@ const GENERIC_ROADMAP: PlatformConfig["roadmap"] = [
 ];
 
 export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
+  instructeur: {
+    key: "instructeur",
+    name: "SPC INSTRUCTEUR",
+    progress: 36,
+    version: "v0.4.0-beta",
+    tagline:
+      "Le cockpit pédagogique des formateurs STAF PRINT. Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception.",
+    roadmap: [
+      {
+        title: "Suivi des apprenants",
+        description: "Progression, assiduité et résultats centralisés dans un tableau de bord unique.",
+      },
+      {
+        title: "Bibliothèque de contenus",
+        description: "Partagez supports, exercices et corrections en quelques secondes.",
+      },
+      {
+        title: "Sessions planifiées",
+        description: "Calendrier intégré et rappels automatiques pour chaque cohorte.",
+      },
+    ],
+  },
   student: {
     key: "student",
     name: "SPC STUDENT",
@@ -67,28 +89,6 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
       {
         title: "Enregistrement cloud",
         description: "Retrouvez chaque session archivée dans votre espace STAF PRINT.",
-      },
-    ],
-  },
-  instructeur: {
-    key: "instructeur",
-    name: "SPC INSTRUCTEUR",
-    progress: 36,
-    version: "v0.4.0-beta",
-    tagline:
-      "Le cockpit pédagogique des formateurs STAF PRINT. Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception.",
-    roadmap: [
-      {
-        title: "Suivi des apprenants",
-        description: "Progression, assiduité et résultats centralisés dans un tableau de bord unique.",
-      },
-      {
-        title: "Bibliothèque de contenus",
-        description: "Partagez supports, exercices et corrections en quelques secondes.",
-      },
-      {
-        title: "Sessions planifiées",
-        description: "Calendrier intégré et rappels automatiques pour chaque cohorte.",
       },
     ],
   },
