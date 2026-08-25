@@ -1,4 +1,5 @@
 import { SITE } from "@/data/site";
+
 export type PlatformKey = "meet" | "student" | "instructor";
 
 export interface PlatformConfig {
@@ -91,18 +92,11 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
   },
 };
 
-/** Alias de sous-domaines vers une plateforme connue. */
+/** Association directe des sous-domaines stricts vers leur PlatformKey. */
 const SUBDOMAIN_ALIASES: Record<string, PlatformKey> = {
   meet: "meet",
-  visio: "meet",
   student: "student",
-  students: "student",
-  etudiant: "student",
-  apprenant: "student",
-  instructeur: "instructor",
-  formateur: "instructor",
-  teacher: "instructor",
-  prof: "instructor",
+  instructor: "instructor",
 };
 
 const IGNORED_SUBDOMAINS = new Set(["www", "localhost", "stafprint", "id-preview", "preview"]);
