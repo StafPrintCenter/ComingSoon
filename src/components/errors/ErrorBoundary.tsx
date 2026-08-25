@@ -69,7 +69,7 @@ export function ErrorComponent({ error, reset }: { error: Error; reset: () => vo
             </button>
             <Link
               to="/"
-              search={{ platform: "default" }}
+              search={{}}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-200 active:scale-95 transition-all"
             >
               <Home className="h-4 w-4" />
