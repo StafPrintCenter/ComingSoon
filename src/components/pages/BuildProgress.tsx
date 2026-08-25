@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, Loader2, Circle } from "lucide-react";
-import { BUILD_PROGRESS, BUILD_STEPS } from "@/lib/site";
+import { getBuildSteps } from "@/lib/site";
 
 const stepIcon = {
   done: <Check className="size-3.5" />,
@@ -8,14 +8,16 @@ const stepIcon = {
   pending: <Circle className="size-3.5" />,
 } as const;
 
-export function BuildProgress() {
+export function BuildProgress({ progress }: { progress: number }) {
+  const steps = getBuildSteps(progress);
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-card mx-auto w-full max-w-2xl rounded-3xl p-6 sm:p-8"
+      className="glass-card mx-auto w-full max-w-xl rounded-3xl p-6 sm:p-8"
       aria-label="Avancement des développements"
     >
       <div className="flex items-end justify-between">
@@ -24,7 +26,7 @@ export function BuildProgress() {
             Avancement
           </p>
           <p className="mt-1 font-display text-4xl font-bold tracking-tight text-foreground">
-            <span className="font-mono text-brand text-glow-brand">{BUILD_PROGRESS}%</span>
+            <span className="font-mono text-brand text-glow-brand">{progress}%</span>
             <span className="ml-2 text-lg font-semibold text-muted-foreground">finalisé</span>
           </p>
         </div>
@@ -37,7 +39,7 @@ export function BuildProgress() {
       <div className="mt-5 h-2.5 w-full overflow-hidden rounded-full bg-muted">
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${BUILD_PROGRESS}%` }}
+          whileInView={{ width: `${progress}%` }}
           viewport={{ once: true }}
           transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="gradient-brand relative h-full overflow-hidden rounded-full"
@@ -48,7 +50,7 @@ export function BuildProgress() {
 
       {/* Étapes du build */}
       <ol className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {BUILD_STEPS.map((step, index) => (
+        {steps.map((step, index) => (
           <motion.li
             key={step.label}
             initial={{ opacity: 0, y: 12 }}
