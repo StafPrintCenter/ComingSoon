@@ -1,15 +1,24 @@
 import { Terminal, Cpu, Hammer, CheckCircle2, Clock } from "lucide-react";
-import type { PlatformConfig } from "@/lib/site";
 import { SITE_LINK } from "@/data/site";
 import { stripProtocol } from "@/lib/domain";
+import type { PlatformConfig } from "@/lib/site";
 
 interface PreviewIllustrationProps {
-  platform: PlatformConfig;
+  platformName?: string;
+  progress?: number;
+  platform?: PlatformConfig;
 }
 
-export function PreviewIllustration({ platform }: PreviewIllustrationProps) {
-  const landingDomain = stripProtocol(SITE_LINK.landingUrl);
-  const platformSlug = platform.name.toLowerCase().replace(/\s+/g, "-");
+export function PreviewIllustration({
+  platformName,
+  progress: progressProp,
+  platform,
+}: PreviewIllustrationProps) {
+  const name = platform?.name ?? platformName ?? "Platform";
+  const progress = platform?.progress ?? progressProp ?? 0;
+
+  const landingDomain = stripProtocol(SITE_LINK.landingUrl ?? "");
+  const platformSlug = name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div className="relative mx-auto w-full max-w-md min-w-0 lg:mx-0 lg:max-w-none">
@@ -44,7 +53,7 @@ export function PreviewIllustration({ platform }: PreviewIllustrationProps) {
             </div>
             <div className="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
               <Cpu className="size-3.5" />
-              <span>{platform.progress}%</span>
+              <span>{progress}%</span>
             </div>
           </div>
 
@@ -68,12 +77,12 @@ export function PreviewIllustration({ platform }: PreviewIllustrationProps) {
           <div className="space-y-1.5 pt-2">
             <div className="flex justify-between text-[10px] text-muted-foreground">
               <span>Compilateur V-Engine</span>
-              <span>{platform.progress}%</span>
+              <span>{progress}%</span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
               <div
                 className="h-full rounded-full bg-brand transition-all duration-500"
-                style={{ width: `${platform.progress}%` }}
+                style={{ width: `${progress}%` }}
               />
             </div>
           </div>
