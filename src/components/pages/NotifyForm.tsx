@@ -1,26 +1,29 @@
-import { Bell, BellRing, CheckCircle2, Send } from "lucide-react";
-import { useEffect, useState, type FormEvent } from "react";
+import { Bell, BellRing, CheckCircle2, Send, Loader2, AlertCircle } from "lucide-react";
+import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
+import { registerToWaitlist, WaitlistApiError } from "@/stores/useWaitlistStore";
+import type { WaitlistPlatform } from "@/data/waitlist";
 
 const emailSchema = z.string().trim().email("Adresse email invalide");
-const STORAGE_KEY = "spc-notify-email";
 
-export function NotifyForm({ platformName }: { platformName: string }) {
+interface NotifyFormProps {
+  /** Libellé affiché à l'utilisateur, ex: "SPC Meet" */
+  platformName: string;
+  /** Valeur technique attendue par l'API, ex: "meet" */
+  platform: WaitlistPlatform;
+}
+
+export function NotifyForm({ platformName, platform }: NotifyFormProps) {
   const [email, setEmail] = useState("");
   const [registered, setRegistered] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) setRegistered(saved);
-    } catch {
-      /* stockage indisponible */
-    }
-  }, []);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError(null);
+
     const parsed = emailSchema.safeParse(email);
     if (!parsed.success) {
       toast.error("Adresse email invalide", {
@@ -29,25 +32,25 @@ export function NotifyForm({ platformName }: { platformName: string }) {
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      localStorage.setItem(STORAGE_KEY, parsed.data);
-    } catch {
-      /* stockage indisponible */
+      const result = await registerToWaitlist({ email: parsed.data, platformName: platform });
+      setRegistered(result.email);
+      toast.success("Vous êtes sur la liste !", {
+        description: `Nous préviendrons ${result.email} dès le lancement de ${platformName}.`,
+        icon: <BellRing className="size-4" />,
+      });
+      setEmail("");
+    } catch (err) {
+      const message = err instanceof WaitlistApiError ? err.message : "Une erreur inattendue est survenue.";
+      setError(message);
+      toast.error("Inscription impossible", { description: message });
+    } finally {
+      setIsSubmitting(false);
     }
-    setRegistered(parsed.data);
-    toast.success("Vous êtes sur la liste !", {
-      description: `Nous préviendrons ${parsed.data} dès le lancement de ${platformName}.`,
-      icon: <BellRing className="size-4" />,
-    });
-    setEmail("");
   };
 
   const handleReset = () => {
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch {
-      /* stockage indisponible */
-    }
     setRegistered(null);
   };
 
@@ -73,32 +76,50 @@ export function NotifyForm({ platformName }: { platformName: string }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="glass-card mx-auto flex w-full max-w-xl flex-col gap-3 rounded-2xl p-2.5 sm:flex-row sm:items-center"
-    >
-      <label htmlFor="notify-email" className="sr-only">
-        Adresse email
-      </label>
-      <div className="flex flex-1 items-center gap-2 px-3">
-        <Bell className="size-4 shrink-0 text-muted-foreground" />
-        <input
-          id="notify-email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Entrez votre adresse email"
-          className="w-full bg-transparent py-2.5 text-sm text-foreground outline-none placeholder:text-muted-foreground"
-          autoComplete="email"
-        />
-      </div>
-      <button
-        type="submit"
-        className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+    <div className="mx-auto w-full max-w-xl">
+      <form
+        onSubmit={handleSubmit}
+        className="glass-card flex w-full flex-col gap-3 rounded-2xl p-2.5 sm:flex-row sm:items-center"
       >
-        M'avertir du lancement
-        <Send className="size-4" />
-      </button>
-    </form>
+        <label htmlFor="notify-email" className="sr-only">
+          Adresse email
+        </label>
+        <div className="flex flex-1 items-center gap-2 px-3">
+          <Bell className="size-4 shrink-0 text-muted-foreground" />
+          <input
+            id="notify-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Entrez votre adresse email"
+            className="w-full bg-transparent py-2.5 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+            autoComplete="email"
+            disabled={isSubmitting}
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="size-4 animate-spin" /> Envoi…
+            </>
+          ) : (
+            <>
+              M'avertir du lancement
+              <Send className="size-4" />
+            </>
+          )}
+        </button>
+      </form>
+
+      {error && (
+        <p className="mt-2 flex items-center gap-1.5 text-xs text-destructive">
+          <AlertCircle className="size-3.5 shrink-0" /> {error}
+        </p>
+      )}
+    </div>
   );
 }
