@@ -1,7 +1,8 @@
 /**
  * Configuration centrale de l'écosystème STAF PRINT CENTER.
- * Le nom de la plateforme en construction est injecté dynamiquement :
- * priorité au paramètre d'URL `?platform=`, sinon détection par sous-domaine.
+ * La plateforme en construction est déduite du sous-domaine
+ * (ex: meet.stafprint.com → SPC MEET). Le paramètre `?platform=`
+ * reste disponible pour la prévisualisation.
  */
 
 export const SITE = {
