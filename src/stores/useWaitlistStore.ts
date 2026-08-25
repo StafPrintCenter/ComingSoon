@@ -1,5 +1,6 @@
 import { resolveApiUrl } from "@/lib/api-url";
-import type { APIPlatformWaitlistRegistration, WaitlistPlatform } from "@/data/waitlist";
+import { CURRENT_WAITLIST_PLATFORM } from "@/data/waitlist";
+import type { APIPlatformWaitlistRegistration } from "@/data/waitlist";
 
 type WaitlistResponse = { data: APIPlatformWaitlistRegistration };
 
@@ -15,13 +16,12 @@ export class WaitlistApiError extends Error {
 
 export interface RegisterToWaitlistParams {
   email: string;
-  platformName: WaitlistPlatform;
 }
 
 export async function registerToWaitlist(params: RegisterToWaitlistParams): Promise<APIPlatformWaitlistRegistration> {
   const formData = new FormData();
   formData.append("email", params.email);
-  formData.append("platform_name", params.platformName);
+  formData.append("platform_name", CURRENT_WAITLIST_PLATFORM);
 
   const url = resolveApiUrl(`/api/public/waitlist/register`);
   const response = await fetch(url, { method: "POST", body: formData });
