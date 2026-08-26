@@ -148,6 +148,7 @@ export function resolvePlatform(source: string): PlatformConfig {
     progress: 15,
     version: "v0.1.0-alpha",
     tagline: `Cette plateforme de l'écosystème ${SITE.name} est en cours de construction. Nous peaufinons chaque détail avant l'ouverture.`,
+    logo: fallbackLogo,
     roadmap: GENERIC_ROADMAP,
   };
 }
