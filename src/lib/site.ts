@@ -1,4 +1,5 @@
 import { SITE } from "@/data/site";
+import logo from "@/assets/logos.json";
 
 export type PlatformKey = "meet" | "student" | "instructor";
 
