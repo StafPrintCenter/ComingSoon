@@ -57,6 +57,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 12,
     version: "v0.1.2-alpha",
     tagline: `S'inscrire à une formation, suivre ses cours, rendre ses devoirs et récupérer ses attestations depuis le Student Hub de ${SITE.name}.`,
+    logo: { dark: logo.studentDW, light: logo.studentD },
     roadmap: [
       {
         title: "Parcours personnalisés",
