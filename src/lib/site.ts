@@ -129,6 +129,15 @@ export function resolvePlatform(source: string): PlatformConfig {
   const alias = SUBDOMAIN_ALIASES[raw];
   if (alias) return PLATFORMS[alias];
 
+  // Si slug générique ou inconnu, vérifions si des logos spécifiques existent dans logos.json
+  const customDarkLogo = (logo as Record<string, string>)[`${raw}W`];
+  const customLightLogo = (logo as Record<string, string>)[raw];
+
+  const fallbackLogo = {
+    dark: customDarkLogo || logo.dw,
+    light: customLightLogo || logo.dc,
+  };
+
   if (!raw || IGNORED_SUBDOMAINS.has(raw)) {
     return {
       ...PLATFORMS.meet,
