@@ -63,7 +63,7 @@ function ComingSoonPage() {
         aria-hidden="true"
       />
 
-      <ComingSoonHeader />
+      <ComingSoonHeader platform={platform} />
 
       <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-28 pb-16 sm:px-8 sm:pt-36">
         {/* Hero Section */}
