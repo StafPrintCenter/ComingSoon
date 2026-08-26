@@ -9,6 +9,7 @@ export interface PlatformConfig {
   tagline: string;
   progress: number;
   version: string;
+  logo?: { dark: string; light: string };
   roadmap: { title: string; description: string }[];
 }
 
