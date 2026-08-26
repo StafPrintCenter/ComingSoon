@@ -35,6 +35,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 36,
     version: "v0.4.0-beta",
     tagline: `Préparer, animer et évaluer les sessions de formation : parcours, supports, présence, notation et suivi des apprenants pour ${SITE.name}.`,
+    logo: { dark: logo.instructorW, light: logo.instructor },
     roadmap: [
       {
         title: "Suivi des apprenants",
