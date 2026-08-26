@@ -137,6 +137,7 @@ export function resolvePlatform(source: string): PlatformConfig {
       progress: 15,
       version: "v0.1.0-alpha",
       tagline: `Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception au sein de l'écosystème ${SITE.name}.`,
+      logo: { dark: logo.dw, light: logo.dc },
       roadmap: GENERIC_ROADMAP,
     };
   }
