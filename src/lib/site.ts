@@ -79,6 +79,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 18,
     version: "v0.2.4-alpha",
     tagline: `Plateforme de visioconférence pour les réunions et sessions à distance de ${SITE.name}.`,
+    logo: { dark: logo.meetDW, light: logo.meetD },
     roadmap: [
       {
         title: "Salles HD instantanées",
