@@ -3,6 +3,7 @@ import { Moon, Rocket, Sun } from "lucide-react";
 import logo from "@/assets/logos.json";
 import { SITE_LINK } from "@/data/site";
 import { useTheme } from "@/hooks/useTheme";
+import type { PlatformConfig } from "@/lib/site";
 
 interface ThemeToggleProps {
   dark: boolean;
@@ -21,8 +22,17 @@ function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
   );
 }
 
-export function ComingSoonHeader() {
+interface ComingSoonHeaderProps {
+  platform?: PlatformConfig;
+}
+
+export function ComingSoonHeader({ platform }: ComingSoonHeaderProps) {
   const { dark, toggleTheme } = useTheme();
+
+  // Résolution dynamique du logo selon le thème et la plateforme actuelle
+  const currentLogo = dark
+    ? (platform?.logo?.dark ?? logo.dw)
+    : (platform?.logo?.light ?? logo.dc);
 
   return (
     <motion.header
@@ -34,8 +44,8 @@ export function ComingSoonHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href={SITE_LINK.landingUrl} className="flex items-center">
           <img
-            src={dark ? logo.dw : logo.dc}
-            alt="Logo SPC"
+            src={currentLogo}
+            alt={`Logo ${platform?.name ?? "SPC"}`}
             className="h-10 w-auto md:h-12"
           />
         </a>
@@ -51,7 +61,9 @@ export function ComingSoonHeader() {
               <Rocket className="size-3.5 text-brand" />
               Bientôt disponible
               <span className="text-muted-foreground">•</span>
-              <span className="font-mono text-[11px] text-brand">Phase Bêta</span>
+              <span className="font-mono text-[11px] text-brand">
+                {platform?.version ?? "Phase Bêta"}
+              </span>
             </span>
           </span>
           <ThemeToggle dark={dark} onToggle={toggleTheme} />
