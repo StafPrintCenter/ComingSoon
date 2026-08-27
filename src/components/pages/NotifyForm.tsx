@@ -64,7 +64,7 @@ export function NotifyForm({ platformName }: NotifyFormProps) {
         </p>
         <button
           onClick={handleReset}
-          className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+          className="cursor-pointer text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
         >
           Utiliser une autre adresse
         </button>
@@ -97,7 +97,7 @@ export function NotifyForm({ platformName }: NotifyFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="gradient-brand glow-brand flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+          className="gradient-brand glow-brand flex cursor-pointer items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
         >
           {isSubmitting ? (
             <>
