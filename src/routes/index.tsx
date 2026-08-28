@@ -20,15 +20,23 @@ export const Route = createFileRoute("/")({
     const raw = typeof search["platform"] === "string" ? search["platform"].trim() : "";
     return raw ? { platform: raw } : {};
   },
-  head: () => ({
-    meta: [
-      { title: COMING_SOON_TITLE },
-      { name: "description", content: COMING_SOON_DESC },
-      { name: "robots", content: "noindex, follow" },
-      { property: "og:title", content: COMING_SOON_TITLE },
-      { property: "og:description", content: COMING_SOON_DESC },
-    ],
-  }),
+  head: ({ match }) => {
+    const search = match.search as { platform?: string };
+    const platformConfig = resolvePlatform(search.platform ?? "");
+
+    const title = `${platformConfig.name} en cours de développement | ${SITE.name}`;
+    const description = `${platformConfig.name} (${SITE.name}) est actuellement en cours de construction. ${platformConfig.tagline}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { name: "robots", content: "noindex, follow" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+      ],
+    };
+  },
   component: ComingSoonPage,
 });
 
