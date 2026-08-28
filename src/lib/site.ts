@@ -121,8 +121,16 @@ export function extractSubdomain(hostname: string): string {
  * Résout la configuration de la plateforme depuis le sous-domaine,
  * avec un repli générique construit dynamiquement à partir du slug.
  */
-export function resolvePlatform(source: string): PlatformConfig {
-  const raw = (source.includes(".") ? extractSubdomain(source) : source).toLowerCase();
+export function resolvePlatform(source?: string): PlatformConfig {
+  // Détermination de la chaîne brute à analyser
+  // Si source est vide et qu'on est côté navigateur, on bascule sur le hostname
+  let rawInput = (source ?? "").trim();
+
+  if (!rawInput && typeof window !== "undefined" && window.location?.hostname) {
+    rawInput = window.location.hostname;
+  }
+
+  const raw = (rawInput.includes(".") ? extractSubdomain(rawInput) : rawInput).toLowerCase();
 
   if (raw && raw in PLATFORMS) return PLATFORMS[raw as PlatformKey];
 
