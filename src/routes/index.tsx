@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
   },
   head: ({ match }) => {
     const search = match.search as { platform?: string };
-    const platformConfig = resolvePlatform(search.platform ?? "");
+    const platformConfig = resolvePlatform(search.platform);
 
     const title = `${platformConfig.name} en cours de développement | ${SITE.name}`;
     const description = `${platformConfig.name} (${SITE.name}) est actuellement en cours de construction. ${platformConfig.tagline}`;
@@ -43,12 +43,12 @@ export const Route = createFileRoute("/")({
 function ComingSoonPage() {
   const { platform: platformParam } = Route.useSearch();
   const [platform, setPlatform] = useState<PlatformConfig>(() =>
-    resolvePlatform(platformParam ?? ""),
+    resolvePlatform(platformParam),
   );
 
-  // Détection par sous-domaine quand aucun paramètre d'URL n'est fourni.
+  // Synchronisation dynamique si le paramètre ou le domaine change
   useEffect(() => {
-    setPlatform(resolvePlatform(platformParam ?? window.location.hostname));
+    setPlatform(resolvePlatform(platformParam));
   }, [platformParam]);
 
   return (
