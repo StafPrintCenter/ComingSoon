@@ -13,9 +13,6 @@ import {
 import { SITE } from "@/data/site";
 import { resolvePlatform, type PlatformConfig } from "@/lib/site";
 
-const COMING_SOON_TITLE = `En cours de développement | ${SITE.name}`;
-const COMING_SOON_DESC = `Cette plateforme de l'écosystème ${SITE.name} est actuellement en cours de construction. Inscrivez-vous pour être informé du lancement.`;
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Route = createFileRoute("/")({
