@@ -30,7 +30,7 @@ export function ComingSoonHeroText({ platform }: ComingSoonHeroTextProps) {
       >
         <span className="text-glow-brand text-brand">{platform.name}</span>
         <br />
-        arrive très bientôt.
+        arrive très bientôt.sss
       </motion.h1>
 
       <motion.p
