@@ -8,6 +8,18 @@ const FEATURED_SITE_NAMES = ["Site vitrine", "Documentation officielle", "SPC Ar
 
 export function LivePlatforms() {
   const { dark } = useTheme();
+  const { sites, isLoading } = useEcosystemSitesStore();
+
+  // Filtrage exclusif sur les 3 plateformes cibles
+  const featuredPlatforms = sites.filter((site) =>
+    FEATURED_SITE_NAMES.some(
+      (name) => site.name.toLowerCase().trim() === name.toLowerCase().trim()
+    )
+  );
+
+  if (isLoading && featuredPlatforms.length === 0) {
+    return null;
+  }
 
   return (
     <section className="mx-auto w-full max-w-4xl" aria-label="Plateformes déjà disponibles">
