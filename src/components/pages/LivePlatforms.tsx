@@ -36,8 +36,7 @@ export function LivePlatforms() {
       <div className="grid gap-4 sm:grid-cols-3">
         {featuredPlatforms.map((platform, index) => {
           const logoSrc = dark
-            ? platform.logoVariants.mw || platform.logoUrl
-            : platform.logoVariants.mc || platform.logoUrl;
+            ? platform.logoVariants.mw : platform.logoVariants.mc;
 
           const displayUrl = stripProtocol(platform.url);
 
