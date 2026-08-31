@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { stripProtocol } from "@/lib/domain";
 import { useTheme } from "@/hooks/useTheme";
+import { useEcosystemSitesStore } from "@/stores/useEcosystemSitesStore";
+
+const FEATURED_SITE_NAMES = ["Site vitrine", "Documentation officielle", "SPC Arcade"];
 
 export function LivePlatforms() {
   const { dark } = useTheme();
