@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import logos from "@/assets/logos.json";
-import { ECOSYSTEM_SITES } from "@/data/ecosystem";
 import { stripProtocol } from "@/lib/domain";
 import { useTheme } from "@/hooks/useTheme";
 
