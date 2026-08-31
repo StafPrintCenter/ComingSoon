@@ -1,38 +1,44 @@
-import logos from "@/assets/logos.json";
-import { SITE, SITE_LINK } from "@/data/site";
+export type EcosystemSiteCategory = "principal" | "outil" | "formation" | "communication" | "divertissement";
+export type EcosystemSiteStatus = "available" | "building";
 
-export interface EcosystemSite {
+export interface APIEcosystemSite {
   id: string;
   name: string;
   description: string;
   url: string;
-  logoKey: keyof typeof logos;
-  logoDarkKey: keyof typeof logos;
+  logoKey: string;
+  logoBaseUrl: string;
+  logoUrl: string;
+  logoVariants: {
+    mc: string;
+    mw: string;
+    dc: string;
+    dw: string;
+  };
+  category: EcosystemSiteCategory;
+  status: EcosystemSiteStatus;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export const ECOSYSTEM_SITES: EcosystemSite[] = [
-  {
-    id: "landing",
-    name: "Site vitrine",
-    description: `Le site principal de ${SITE.name} : services, réalisations, formations, blog et contact.`,
-    url: SITE_LINK.landingUrl,
-    logoKey: "mc",
-    logoDarkKey: "mw",
-  },
-  {
-    id: "arcade",
-    name: "SPC Arcade",
-    description: "Hub de jeux interactifs pour se divertir tout en développant ses compétences techniques.",
-    url: SITE_LINK.arcadeUrl,
-    logoKey: "arcade",
-    logoDarkKey: "arcadeW",
-  },
-  {
-    id: "documentation",
-    name: "Documentation officielle",
-    description: `Guides, procédures et ressources techniques de ${SITE.name}.`,
-    url: SITE_LINK.docsUrl,
-    logoKey: "docs",
-    logoDarkKey: "docsW",
-  },
+export const ECOSYSTEM_CATEGORIES: EcosystemSiteCategory[] = [
+  "principal",
+  "outil",
+  "formation",
+  "communication",
+  "divertissement",
 ];
+
+export const ECOSYSTEM_CATEGORY_LABELS: Record<EcosystemSiteCategory, string> = {
+  principal: "Site principal",
+  outil: "Outils",
+  formation: "Formation",
+  communication: "Communication",
+  divertissement: "Divertissement",
+};
+
+export const ECOSYSTEM_STATUS_LABELS: Record<EcosystemSiteStatus | "Tout", string> = {
+  Tout: "Tous les statuts",
+  available: "Disponible",
+  building: "Bientôt",
+};
