@@ -34,8 +34,11 @@ export function LivePlatforms() {
       </motion.p>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        {ECOSYSTEM_SITES.map((platform, index) => {
-          const logoSrc = logos[dark ? platform.logoDarkKey : platform.logoKey];
+        {featuredPlatforms.map((platform, index) => {
+          const logoSrc = dark
+            ? platform.logoVariants.mw || platform.logoUrl
+            : platform.logoVariants.mc || platform.logoUrl;
+
           const displayUrl = stripProtocol(platform.url);
 
           return (
