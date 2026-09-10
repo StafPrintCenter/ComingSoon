@@ -104,6 +104,7 @@ const SUBDOMAIN_ALIASES: Record<string, PlatformKey> = {
   meet: "meet",
   student: "student",
   instructor: "instructor",
+  roadmap: "roadmap",
 };
 
 const IGNORED_SUBDOMAINS = new Set(["www", "localhost", "stafprint", "id-preview", "preview"]);
