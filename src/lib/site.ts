@@ -112,12 +112,12 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
         description: "Visualisez les plateformes, fonctionnalités et évolutions prévues pour l'écosystème SPC.",
       },
       {
-        title: "Partage d'écran 4K",
-        description: "Présentez vos maquettes et documents avec une qualité studio.",
+        title: "Suivi des développements",
+        description: "Consultez l'état d'avancement des projets, des fonctionnalités et des prochaines versions.",
       },
       {
-        title: "Enregistrement cloud",
-        description: `Retrouvez chaque session archivée dans votre espace ${SITE.name}.`,
+        title: "Priorités à venir",
+        description: "Découvrez les prochaines fonctionnalités prévues et les évolutions prioritaires.",
       },
     ],
   },
