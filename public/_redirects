@@ -6,3 +6,6 @@ https://spc-student.netlify.app/*  https://student.stafprint.com/:splat  301!
 
 # MEET
 https://spc-meet.netlify.app/*  https://meet.stafprint.com/:splat  301!
+
+# ROADMAP
+https://spc-roadmap.netlify.app/*  https://roadmap.stafprint.com/:splat  301!
