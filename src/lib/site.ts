@@ -102,7 +102,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
   roadmap: {
     key: "roadmap",
     name: "SPC Roadmap",
-    progress: 0,
+    progress: 38,
     version: "v0.5.0-beta",
     tagline: `Suivez en temps réel l'avancement des fonctionnalités, des projets et des déploiements majeurs de ${SITE.name}.`,
     logo: { dark: logo.dw, light: logo.dc },
