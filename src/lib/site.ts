@@ -80,7 +80,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     name: "SPC Meet",
     progress: 18,
     version: "v0.2.4-alpha",
-    tagline: `Plateforme de visioconférence pour les réunions et sessions à distance de ${SITE.name}.`,
+    tagline: `Espace de visioconférence et de réunions interactives en direct pour l'écosystème ${SITE.name}.`,
     logo: { dark: logo.meetDW, light: logo.meetD },
 
     roadmap: [
@@ -108,16 +108,16 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     logo: { dark: logo.dw, light: logo.dc },
     roadmap: [
       {
-        title: "Vision de l'écosystème",
-        description: "Visualisez les plateformes, fonctionnalités et évolutions prévues pour l'écosystème SPC.",
+        title: "Suivi public des livraisons",
+        description: "Visibilité claire sur les versions alpha, bêta et les déploiements en production.",
       },
       {
-        title: "Suivi des développements",
-        description: "Consultez l'état d'avancement des projets, des fonctionnalités et des prochaines versions.",
+        title: "Boîte à idées & votes",
+        description: "Permettez aux utilisateurs de proposer et voter pour les futures fonctionnalités.",
       },
       {
-        title: "Priorités à venir",
-        description: "Découvrez les prochaines fonctionnalités prévues et les évolutions prioritaires.",
+        title: "Historique des mises à jour",
+        description: "Consultez les changelogs détaillés de chaque application de l'écosystème.",
       },
     ],
   },
