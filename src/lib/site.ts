@@ -82,6 +82,30 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     version: "v0.2.4-alpha",
     tagline: `Plateforme de visioconférence pour les réunions et sessions à distance de ${SITE.name}.`,
     logo: { dark: logo.meetDW, light: logo.meetD },
+
+    roadmap: [
+      {
+        title: "Gestion des participants",
+        description: "Contrôlez les participants, leur admission et les accès pendant chaque réunion.",
+      },
+      {
+        title: "Espace de discussion",
+        description: "Échangez par chat et partagez des réactions pendant les sessions à distance.",
+      },
+      {
+        title: "Présentations collaboratives",
+        description: "Partagez votre écran, vos documents et vos supports directement pendant la réunion.",
+      },
+    ],
+  },
+
+  roadmap: {
+    key: "roadmap",
+    name: "SPC Roadmap",
+    progress: 0,
+    version: "À venir",
+    tagline: `Un espace dédié à la visibilité, au suivi et à la planification de l'évolution de l'écosystème ${SITE.name}.`,
+    logo: { dark: logo.dw, light: logo.dc },
     roadmap: [
       {
         title: "Vision de l'écosystème",
