@@ -74,6 +74,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
       },
     ],
   },
+
   meet: {
     key: "meet",
     name: "SPC Meet",
