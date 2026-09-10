@@ -82,7 +82,6 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     version: "v0.2.4-alpha",
     tagline: `Espace de visioconférence et de réunions interactives en direct pour l'écosystème ${SITE.name}.`,
     logo: { dark: logo.meetDW, light: logo.meetD },
-
     roadmap: [
       {
         title: "Invitations sécurisées",
