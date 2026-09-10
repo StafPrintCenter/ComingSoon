@@ -51,6 +51,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
       },
     ],
   },
+
   student: {
     key: "student",
     name: "Espace Apprenant",
