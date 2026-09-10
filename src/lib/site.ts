@@ -85,8 +85,8 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
 
     roadmap: [
       {
-        title: "Gestion des participants",
-        description: "Contrôlez les participants, leur admission et les accès pendant chaque réunion.",
+        title: "Invitations sécurisées",
+        description: "Recevez un lien d'accès et rejoignez vos réunions en quelques clics, sans configuration complexe.",
       },
       {
         title: "Espace de discussion",
