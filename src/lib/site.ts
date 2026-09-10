@@ -186,7 +186,9 @@ const STEP_THRESHOLDS = [
 export function getBuildSteps(progress: number): { label: string; status: BuildStepStatus }[] {
   let activeAssigned = false;
   return STEP_THRESHOLDS.map((step) => {
-    if (progress >= step.threshold) return { label: step.label, status: "done" as const };
+    if (progress >= step.threshold) {
+      return { label: step.label, status: "done" as const };
+    }
     if (!activeAssigned) {
       activeAssigned = true;
       return { label: step.label, status: "active" as const };
