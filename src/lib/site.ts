@@ -138,7 +138,7 @@ export function resolvePlatform(source?: string): PlatformConfig {
   if (raw && raw in PLATFORMS) { return PLATFORMS[raw as PlatformKey] }
 
   const alias = SUBDOMAIN_ALIASES[raw];
-  if (alias) return PLATFORMS[alias];
+  if (alias) { return PLATFORMS[alias] }
 
   // Si slug générique ou inconnu, vérifions si des logos spécifiques existent dans logos.json
   const customDarkLogo = (logo as Record<string, string>)[`${raw}W`];
