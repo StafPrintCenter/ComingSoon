@@ -135,7 +135,7 @@ export function resolvePlatform(source?: string): PlatformConfig {
 
   const raw = (rawInput.includes(".") ? extractSubdomain(rawInput) : rawInput).toLowerCase();
 
-  if (raw && raw in PLATFORMS) return PLATFORMS[raw as PlatformKey];
+  if (raw && raw in PLATFORMS) { return PLATFORMS[raw as PlatformKey] }
 
   const alias = SUBDOMAIN_ALIASES[raw];
   if (alias) return PLATFORMS[alias];
