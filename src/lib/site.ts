@@ -84,8 +84,8 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     logo: { dark: logo.meetDW, light: logo.meetD },
     roadmap: [
       {
-        title: "Salles HD instantanées",
-        description: "Créez une réunion en un clic, sans installation, avec un lien unique.",
+        title: "Vision de l'écosystème",
+        description: "Visualisez les plateformes, fonctionnalités et évolutions prévues pour l'écosystème SPC.",
       },
       {
         title: "Partage d'écran 4K",
