@@ -147,8 +147,6 @@
   }
 }
 
-/* ---- Utilitaires signature STAF PRINT CENTER ---- */
-
 /* Trame de points (Dot Matrix) */
 @utility dot-matrix {
   background-image: radial-gradient(circle,
