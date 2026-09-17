@@ -3,24 +3,6 @@ import logo from "@/assets/logos.json";
 
 export type PlatformKey = "meet" | "student" | "instructor" | "roadmap";
 
-type LogoVariants = {
-  mc: string;
-  mw: string;
-  dc: string;
-  dw: string;
-};
-
-type LogosConfig = {
-  mc: string;
-  mw: string;
-  dc: string;
-  dw: string;
-  meta: string;
-  other?: Record<string, LogoVariants>;
-};
-
-const LOGOS = logo as LogosConfig;
-
 export interface PlatformConfig {
   key: string;
   name: string;
@@ -29,6 +11,13 @@ export interface PlatformConfig {
   version: string;
   logo?: { dark: string; light: string };
   roadmap: { title: string; description: string }[];
+}
+
+interface SubPlatformLogo {
+  mc: string;
+  mw: string;
+  dc: string;
+  dw: string;
 }
 
 const GENERIC_ROADMAP: PlatformConfig["roadmap"] = [
@@ -53,7 +42,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 36,
     version: "v0.4.0-beta",
     tagline: `Préparer, animer et évaluer les sessions de formation : parcours, supports, présence, notation et suivi des apprenants pour ${SITE.name}.`,
-    logo: { dark: LOGOS.other?.instructor?.dw ?? LOGOS.dw, light: LOGOS.other?.instructor?.dc ?? LOGOS.dc },
+    logo: { dark: logo.other.instructor.dw, light: logo.other.instructor.dc },
     roadmap: [
       {
         title: "Suivi des apprenants",
@@ -76,7 +65,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 12,
     version: "v0.1.2-alpha",
     tagline: `S'inscrire à une formation, suivre ses cours, rendre ses devoirs et récupérer ses attestations depuis le Student Hub de ${SITE.name}.`,
-    logo: { dark: LOGOS.other?.student?.dw ?? LOGOS.dw, light: LOGOS.other?.student?.dc ?? LOGOS.dc },
+    logo: { dark: logo.other.student.dw, light: logo.other.student.dc },
     roadmap: [
       {
         title: "Parcours personnalisés",
@@ -99,7 +88,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 18,
     version: "v0.2.4-alpha",
     tagline: `Espace de visioconférence et de réunions interactives en direct pour l'écosystème ${SITE.name}.`,
-    logo: { dark: LOGOS.other?.meet?.dw ?? LOGOS.dw, light: LOGOS.other?.meet?.dc ?? LOGOS.dc },
+    logo: { dark: logo.other.meet.dw, light: logo.other.meet.dc },
     roadmap: [
       {
         title: "Invitations sécurisées",
@@ -122,7 +111,7 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
     progress: 38,
     version: "v0.5.0-beta",
     tagline: `Suivez en temps réel l'avancement des fonctionnalités, des projets et des déploiements majeurs de ${SITE.name}.`,
-    logo: { dark: LOGOS.other?.roadmap?.dw ?? LOGOS.dw, light: LOGOS.other?.roadmap?.dc ?? LOGOS.dc },
+    logo: { dark: logo.other.roadmap.dw, light: logo.other.roadmap.dc },
     roadmap: [
       {
         title: "Suivi public des livraisons",
@@ -169,10 +158,8 @@ export function resolvePlatform(source?: string): PlatformConfig {
   // Détermination de la chaîne brute à analyser
   // Si source est vide et qu'on est côté navigateur, on bascule sur le hostname
   let rawInput = (source ?? "").trim();
-
   // Côté navigateur, utilisation automatique du hostname courant.
-  if (!rawInput && typeof window !== "undefined" &&
-    window.location?.hostname) {
+  if (!rawInput && typeof window !== "undefined" && window.location?.hostname) {
     rawInput = window.location.hostname;
   }
 
@@ -186,11 +173,11 @@ export function resolvePlatform(source?: string): PlatformConfig {
   if (alias) { return PLATFORMS[alias] }
 
   // Si slug générique ou inconnu, vérifions si des logos spécifiques existent dans logos.json
-  const customLogo = LOGOS.other?.[raw];
+  const otherLogos = (logo.other as Record<string, SubPlatformLogo | undefined>)[raw];
 
   const fallbackLogo = {
-    dark: customLogo?.dw ?? LOGOS.dw,
-    light: customLogo?.dc ?? LOGOS.dc,
+    dark: otherLogos?.dw || logo.dw,
+    light: otherLogos?.dc || logo.dc,
   };
 
   // Sous-domaine ignoré ou absent.
@@ -202,10 +189,7 @@ export function resolvePlatform(source?: string): PlatformConfig {
       progress: 15,
       version: "v0.1.0-alpha",
       tagline: `Nous peaufinons les dernières fonctionnalités pour vous offrir une expérience d'exception au sein de l'écosystème ${SITE.name}.`,
-      logo: {
-        dark: LOGOS.dw,
-        light: LOGOS.dc,
-      },
+      logo: { dark: logo.dw, light: logo.dc },
       roadmap: GENERIC_ROADMAP,
     };
   }
