@@ -4,20 +4,30 @@
   "dc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/BASE-DC.png",
   "dw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/BASE-DW.png",
   "meta": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Other/meta.avif",
-  "instructor": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-MC.png",
-  "instructorW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-MW.png",
-  "instructorD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-DC.png",
-  "instructorDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-DW.png",
-  "student": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-MC.png",
-  "studentW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-MW.png",
-  "studentD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-DC.png",
-  "studentDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-DW.png",
-  "meet": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MC.png",
-  "meetW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MW.png",
-  "meetD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DC.png",
-  "meetDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DW.png",
-  "roadmap": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-MC.png",
-  "roadmapW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-MW.png",
-  "roadmapD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-DC.png",
-  "roadmapDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-DW.png"
+  "other": {
+    "instructor": {
+      "mc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-MC.png",
+      "mw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-MW.png",
+      "dc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-DC.png",
+      "dw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/INSTRUCTOR-DW.png"
+    },
+    "student": {
+      "mc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-MC.png",
+      "mw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-MW.png",
+      "dc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-DC.png",
+      "dw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/STUDENT-DW.png"
+    },
+    "meet": {
+      "mc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MC.png",
+      "mw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MW.png",
+      "dc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DC.png",
+      "dw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DW.png"
+    },
+    "roadmap": {
+      "mc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-MC.png",
+      "mw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-MW.png",
+      "dc": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-DC.png",
+      "dw": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/ROADMAP-DW.png"
+    }
+  }
 }
