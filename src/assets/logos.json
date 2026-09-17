@@ -15,9 +15,5 @@
   "meet": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MC.png",
   "meetW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-MW.png",
   "meetD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DC.png",
-  "meetDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DW.png",
-  "docs": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/DOCS-MC.png",
-  "docsW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/DOCS-MW.png",
-  "docsD": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/DOCS-DC.png",
-  "docsDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/DOCS-DW.png"
+  "meetDW": "https://cdn.jsdelivr.net/gh/stafprintcenter/Files/Images/Logos/MEET-DW.png"
 }
