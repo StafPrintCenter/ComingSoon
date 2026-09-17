@@ -4,19 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system - STAF PRINT CENTER "Coming Soon"
- *
- * Palette stricte :
- *  - Fond clair : off-white chaud #fdfbf7
- *  - Fond sombre : slate profond #0f172a / #020617
- *  - Accent signature : orange vibrant #f97316 / #ea580c
- *  - Secondaire : slate grisé #64748b, blanc pur #ffffff
- *
- * Typographies :
- *  - Space Grotesk (titres), Inter (corps), JetBrains Mono (chiffres/versions)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
