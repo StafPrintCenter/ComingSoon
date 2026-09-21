@@ -1,15 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import {
-  ComingSoonHeader,
-  PreviewIllustration,
-  BuildProgress,
-  Roadmap,
-  LivePlatforms,
-  ComingSoonHeroText,
-  ComingSoonFooter,
-} from "@/components/pages";
+import { PreviewIllustration, BuildProgress, Roadmap, LivePlatforms, ComingSoonHeroText } from "@/components/pages";
+import { ComingSoonHeader, ComingSoonFooter } from "@/components/pages";
 import { SITE } from "@/data/site";
 import { resolvePlatform, type PlatformConfig } from "@/lib/site";
 
