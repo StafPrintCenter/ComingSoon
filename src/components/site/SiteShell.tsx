@@ -1,12 +1,19 @@
 import type { ReactNode } from "react";
 import { ComingSoonHeader, ComingSoonFooter } from "./";
+import type { PlatformConfig } from "@/lib/site";
 
-export function SiteShell({ children }: { children: ReactNode }) {
+interface SiteShellProps {
+  children: ReactNode;
+  platform: PlatformConfig;
+}
+
+export function SiteShell({ children, platform }: SiteShellProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <ComingSoonHeader />
+      <ComingSoonHeader platform={platform} />
+
       <main className="flex-1 pt-16 md:pt-20">{children}</main>
-      <ComingSoonFooter />
+      <ComingSoonFooter platform={platform} />
     </div>
   );
 }
