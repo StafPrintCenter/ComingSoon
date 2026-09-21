@@ -77,12 +77,11 @@ function ComingSoonPage() {
           </motion.div>
         </section>
 
-        <BuildProgress progress={platform.progress} />
-        <Roadmap roadmap={platform.roadmap} />
-        <LivePlatforms />
-      </main>
-
-      <ComingSoonFooter platform={platform} />
-    </div>
+          <BuildProgress progress={platform.progress} />
+          <Roadmap roadmap={platform.roadmap} />
+          <LivePlatforms />
+        </main>
+      </div>
+    </SiteShell>
   );
 }
