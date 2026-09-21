@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { PreviewIllustration, BuildProgress, Roadmap, LivePlatforms, ComingSoonHeroText } from "@/components/pages";
-import { ComingSoonHeader, ComingSoonFooter } from "@/components/site";
+import { SiteShell } from "@/components/site";
 import { SITE } from "@/data/site";
 import { resolvePlatform, type PlatformConfig } from "@/lib/site";
 
