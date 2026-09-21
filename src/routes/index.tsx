@@ -61,12 +61,10 @@ function ComingSoonPage() {
         aria-hidden="true"
       />
 
-      <ComingSoonHeader platform={platform} />
-
-      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-28 pb-16 sm:px-8 sm:pt-36">
-        {/* Hero Section */}
-        <section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
-          <ComingSoonHeroText platform={platform} />
+        <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-16 pb-16 sm:px-8">
+          {/* Hero Section */}
+          <section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
+            <ComingSoonHeroText platform={platform} />
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
