@@ -67,15 +67,15 @@ function ComingSoonPage() {
           <section className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-10">
             <ComingSoonHeroText platform={platform} />
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.7, ease }}
-            className="w-full"
-          >
-            <PreviewIllustration platform={platform} />
-          </motion.div>
-        </section>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.7, ease }}
+              className="w-full"
+            >
+              <PreviewIllustration platform={platform} />
+            </motion.div>
+          </section>
 
           <BuildProgress progress={platform.progress} />
           <Roadmap roadmap={platform.roadmap} />
