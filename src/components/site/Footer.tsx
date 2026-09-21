@@ -1,4 +1,4 @@
-import { SITE } from "@/data/site";
+import { SITE, SITE_LINK } from "@/data/site";
 import type { PlatformConfig } from "@/lib/site";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon, WhatsAppIcon } from "@/components/site/icons";
 
