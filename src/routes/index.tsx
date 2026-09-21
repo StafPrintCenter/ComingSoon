@@ -45,21 +45,22 @@ function ComingSoonPage() {
   }, [platformParam]);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-background font-sans text-foreground">
-      {/* Décor : trame de points + halos */}
-      <div className="dot-matrix pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute top-1/3 -left-40 size-96 animate-float-slow rounded-full bg-brand/10 blur-[100px]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -right-40 bottom-0 size-96 rounded-full bg-brand-deep/10 blur-[100px]"
-        aria-hidden="true"
-      />
+    <SiteShell platform={platform}>
+      <div className="relative min-h-screen overflow-x-clip bg-background font-sans text-foreground">
+        {/* Décor : trame de points + halos */}
+        <div className="dot-matrix pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div
+          className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute top-1/3 -left-40 size-96 animate-float-slow rounded-full bg-brand/10 blur-[100px]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-40 bottom-0 size-96 rounded-full bg-brand-deep/10 blur-[100px]"
+          aria-hidden="true"
+        />
 
         <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-5 pt-16 pb-16 sm:px-8">
           {/* Hero Section */}
