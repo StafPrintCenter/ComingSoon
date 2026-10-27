@@ -62,8 +62,8 @@ export const PLATFORMS: Record<PlatformKey, PlatformConfig> = {
   student: {
     key: "student",
     name: "Espace Apprenant",
-    progress: 12,
-    version: "v0.1.2-alpha",
+    progress: 86,
+    version: "v0.2.2-alpha",
     tagline: `S'inscrire à une formation, suivre ses cours, rendre ses devoirs et récupérer ses attestations depuis le Student Hub de ${SITE.name}.`,
     logo: { dark: logo.other.student.dw, light: logo.other.student.dc },
     roadmap: [
